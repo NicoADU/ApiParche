@@ -1,0 +1,138 @@
+<div class="login-wrapper">
+
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+
+  <aside class="brand-panel">
+    <div class="brand-content">
+      <div class="logo-mark">
+        <span class="logo-icon">🔥</span>
+      </div>
+      <h1 class="brand-name">Parche<span>Plan</span></h1>
+      <p class="brand-tagline">El único lugar donde los planes<br><em>sí se concretan.</em></p>
+
+<!--      <div class="feature-pills">-->
+<!--        <div class="pill">-->
+<!--          <span class="pill-icon">🗳️</span>-->
+<!--          <span>Votá por el lugar y la hora</span>-->
+<!--        </div>-->
+<!--        <div class="pill">-->
+<!--          <span class="pill-icon">📍</span>-->
+<!--          <span>Confirmá asistencia</span>-->
+<!--        </div>-->
+<!--        <div class="pill">-->
+<!--          <span class="pill-icon">🏆</span>-->
+<!--          <span>Rankings de tu parche</span>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+
+    <div class="brand-deco">
+      <div class="deco-ring ring-1"></div>
+      <div class="deco-ring ring-2"></div>
+      <div class="deco-ring ring-3"></div>
+    </div>
+  </aside>
+
+
+  <main class="form-panel">
+    <div class="form-card">
+      <div class="form-header">
+        <span class="form-eyebrow">Bienvenido de vuelta</span>
+        <h2 class="form-title">Entrá a tu parche</h2>
+      </div>
+
+      <form class="login-form" (ngSubmit)="onLogin()" #loginForm="ngForm">
+
+        <div class="field-group" [class.focused]="emailFocused" [class.has-value]="loginData.email">
+          <label class="field-label" for="email">Correo universitario</label>
+          <div class="field-wrap">
+            <span class="field-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </span>
+            <input
+              id="email"
+              type="email"
+              class="field-input"
+              [(ngModel)]="loginData.email"
+              name="email"
+              placeholder="tucorreo@universidad.edu.co"
+              (focus)="emailFocused = true"
+              (blur)="emailFocused = false"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="field-group" [class.focused]="passwordFocused" [class.has-value]="loginData.password">
+          <label class="field-label" for="password">Contraseña</label>
+          <div class="field-wrap">
+            <span class="field-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </span>
+            <input
+              id="password"
+              [type]="showPassword ? 'text' : 'password'"
+              class="field-input"
+              [(ngModel)]="loginData.password"
+              name="password"
+              placeholder="••••••••"
+              (focus)="passwordFocused = true"
+              (blur)="passwordFocused = false"
+              required
+            />
+            <button type="button" class="toggle-password" (click)="showPassword = !showPassword">
+              <svg *ngIf="!showPassword" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg *ngIf="showPassword" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+<!--        <div class="form-options">-->
+<!--          <label class="checkbox-wrap">-->
+<!--            <input type="checkbox" [(ngModel)]="loginData.remember" name="remember" />-->
+<!--            <span class="checkbox-custom"></span>-->
+<!--            <span class="checkbox-label">Recuérdame</span>-->
+<!--          </label>-->
+<!--          <a href="#" class="forgot-link">¿Olvidaste tu clave?</a>-->
+<!--        </div>-->
+
+        <div class="error-banner" *ngIf="errorMessage">
+          <span>⚠️ {{ errorMessage }}</span>
+        </div>
+
+        <button type="submit" class="btn-primary" [class.loading]="isLoading" [disabled]="isLoading">
+          <span class="btn-text" *ngIf="!isLoading">Entrar al parche</span>
+          <span class="btn-loader" *ngIf="isLoading">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+
+      </form>
+
+      <div class="form-divider">
+        <span>¿Primera vez?</span>
+      </div>
+
+      <a routerLink="/register" class="btn-secondary">
+        Crear mi cuenta
+      </a>
+    </div>
+  </main>
+</div>
