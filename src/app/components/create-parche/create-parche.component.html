@@ -1,0 +1,176 @@
+<div class="page-wrapper">
+
+  <!-- Fondo -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <!-- Navbar mínima -->
+  <nav class="top-nav">
+    <a routerLink="/home" class="nav-back">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Mis parches
+    </a>
+    <div class="nav-brand">
+      <span>🔥</span> ParchePlan
+    </div>
+  </nav>
+
+  <main class="main-content">
+
+    <div class="page-header">
+      <span class="eyebrow">Nuevo parche</span>
+      <h1 class="page-title">Crea tu grupo</h1>
+      <p class="page-subtitle">Ponle personalidad a tu parche y empieza a organizar planes épicos.</p>
+    </div>
+
+    <div class="form-container">
+      <form class="create-form" (ngSubmit)="onCreate()" #createForm="ngForm">
+
+        <div class="cover-section">
+          <div class="cover-preview" [style.background-image]="coverPreviewUrl ? 'url(' + coverPreviewUrl + ')' : ''">
+            <div class="cover-overlay" *ngIf="!coverPreviewUrl">
+              <span class="cover-placeholder-icon">🖼️</span>
+              <span class="cover-placeholder-text">Vista previa del cover</span>
+            </div>
+            <div class="cover-gradient"></div>
+            <div class="cover-badge" *ngIf="parche.name">{{ parche.name }}</div>
+          </div>
+        </div>
+
+        <div class="form-block">
+          <h3 class="block-title">
+            <span class="block-num">01</span>
+            Información básica
+          </h3>
+
+          <div class="fields-grid">
+
+            <div class="field-group full-width" [class.focused]="focused['name']">
+              <label class="field-label" for="name">Nombre del parche *</label>
+              <div class="field-wrap">
+                <span class="field-icon">✨</span>
+                <input
+                  id="name"
+                  type="text"
+                  class="field-input"
+                  [(ngModel)]="parche.name"
+                  name="name"
+                  placeholder="Ej: Los del Bloque A, Café Estudiantil..."
+                  (focus)="focused['name'] = true"
+                  (blur)="focused['name'] = false"
+                  maxlength="50"
+                  required
+                />
+                <span class="char-count">{{ parche.name.length }}/50</span>
+              </div>
+            </div>
+
+            <div class="field-group full-width" [class.focused]="focused['description']">
+              <label class="field-label" for="description">Descripción</label>
+              <div class="field-wrap textarea-wrap">
+                <textarea
+                  id="description"
+                  class="field-input textarea"
+                  [(ngModel)]="parche.description"
+                  name="description"
+                  placeholder="¿De qué va este parche? Cuéntales a los que quieran unirse..."
+                  (focus)="focused['description'] = true"
+                  (blur)="focused['description'] = false"
+                  maxlength="200"
+                  rows="3"
+                ></textarea>
+                <span class="char-count bottom">{{ parche.description.length }}/200</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="form-block">
+          <h3 class="block-title">
+            <span class="block-num">02</span>
+            Imagen de portada
+          </h3>
+
+          <div class="field-group" [class.focused]="focused['coverUrl']">
+            <label class="field-label" for="coverUrl">URL de imagen</label>
+            <div class="field-wrap">
+              <span class="field-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </span>
+              <input
+                id="coverUrl"
+                type="url"
+                class="field-input"
+                [(ngModel)]="parche.coverImageUrl"
+                name="coverUrl"
+                placeholder="https://images.unsplash.com/..."
+                (focus)="focused['coverUrl'] = true"
+                (blur)="onCoverBlur()"
+              />
+            </div>
+            <span class="field-hint">Pega el link de cualquier imagen pública (Unsplash, Imgur, etc.)</span>
+          </div>
+
+          <div class="quick-covers">
+            <span class="quick-label">Sugerencias rápidas:</span>
+            <div class="quick-grid">
+              <button
+                type="button"
+                class="quick-thumb"
+                *ngFor="let cover of suggestedCovers; let i = index"
+                [class.selected]="parche.coverImageUrl === cover.url"
+                (click)="selectCover(cover.url)"
+                [title]="cover.label"
+              >
+                <img [src]="cover.url" [alt]="cover.label" loading="lazy" />
+                <span class="thumb-label">{{ cover.label }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="error-banner" *ngIf="errorMessage">
+          <span>⚠️ {{ errorMessage }}</span>
+        </div>
+
+        <!-- Acciones -->
+        <div class="form-actions">
+          <a routerLink="/home" class="btn-cancel">Cancelar</a>
+
+          <button
+            type="submit"
+            class="btn-primary"
+            [class.loading]="isLoading"
+            [disabled]="isLoading || !parche.name.trim()"
+          >
+            <span class="btn-text" *ngIf="!isLoading">
+              Crear parche 🚀
+            </span>
+            <span class="btn-loader" *ngIf="isLoading">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Tip card -->
+      <div class="tip-card">
+        <span class="tip-icon">💡</span>
+        <div>
+          <strong>Tip:</strong> Después de crear el parche recibirás un <em>código de invitación</em> para que tus amigos se unan fácilmente.
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
