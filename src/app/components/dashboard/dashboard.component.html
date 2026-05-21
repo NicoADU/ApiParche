@@ -1,0 +1,75 @@
+<div class="app-shell">
+  <div class="dashboard-page">
+
+    <!-- Top bar -->
+    <header class="top-bar">
+      <div class="greeting">
+        <span class="greeting-sub">Hola de vuelta 👋</span>
+        <h1 class="greeting-name">{{ userName }}</h1>
+      </div>
+      <img class="user-avatar" [src]="avatarUrl || 'https://api.dicebear.com/7.x/thumbs/svg?seed='+userName" [alt]="userName" routerLink="/profile" />
+    </header>
+
+    <!-- Action buttons -->
+    <div class="action-row">
+      <button class="action-btn primary" routerLink="/create">
+        <span class="action-icon">✨</span>
+        <div>
+          <span class="action-title">Crear parche</span>
+          <span class="action-sub">Nuevo grupo</span>
+        </div>
+      </button>
+      <button class="action-btn secondary" routerLink="/join">
+        <span class="action-icon">🔗</span>
+        <div>
+          <span class="action-title">Unirse</span>
+          <span class="action-sub">Con código</span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Loading skeleton -->
+    <div class="parche-list" *ngIf="isLoading">
+      <div class="skeleton-card" *ngFor="let i of [1,2,3]">
+        <div class="skeleton" style="height:110px;border-radius:14px 14px 0 0"></div>
+        <div style="padding:1rem;display:flex;flex-direction:column;gap:0.5rem">
+          <div class="skeleton" style="height:14px;width:60%"></div>
+          <div class="skeleton" style="height:11px;width:40%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" *ngIf="!isLoading && parches.length === 0">
+      <span class="empty-icon">🏝️</span>
+      <span class="empty-title">Aún no estás en ningún parche</span>
+      <span class="empty-sub">Crea uno o únete con un código de invitación.</span>
+    </div>
+
+    <!-- Parche cards -->
+    <div class="parche-list" *ngIf="!isLoading && parches.length > 0">
+      <h2 class="list-title">Mis parches</h2>
+      <div class="parche-card" *ngFor="let p of parches" [routerLink]="['/parche', p.id]">
+        <div class="card-cover" [style.background-image]="p.coverUrl ? 'url('+p.coverUrl+')' : ''">
+          <div class="card-cover-gradient"></div>
+          <div class="card-cover-emoji" *ngIf="!p.coverUrl">🔥</div>
+          <span class="card-role badge" [class]="'badge-'+p.role.toLowerCase()">{{ p.role }}</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">{{ p.name }}</h3>
+          <div class="card-meta">
+            <span>👥 {{ p.memberCount }} miembros</span>
+            <span *ngIf="p.activePlans > 0" class="active-plans-pill">{{ p.activePlans }} plan{{ p.activePlans > 1 ? 'es' : '' }} activo{{ p.activePlans > 1 ? 's' : '' }}</span>
+          </div>
+        </div>
+        <div class="card-arrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <app-navbar />
+</div>

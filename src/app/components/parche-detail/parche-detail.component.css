@@ -1,0 +1,55 @@
+.parche-detail-page { min-height: 100vh; background: var(--bg); }
+
+.parche-header {
+  height: 220px; position: relative;
+  background: linear-gradient(135deg, #1a0a00, #2d1200);
+  background-size: cover; background-position: center;
+  display: flex; flex-direction: column; justify-content: space-between; padding: 1rem;
+}
+.header-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(11,12,16,0.95) 100%); }
+.header-actions { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
+.back-btn { display: flex; align-items: center; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 0.5rem; color: var(--t1); cursor: pointer; }
+.members-btn { display: flex; align-items: center; gap: 0.4rem; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; padding: 0.4rem 0.9rem; color: var(--t1); font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+.header-info { position: relative; z-index: 1; }
+.parche-name { font-family: 'Syne', sans-serif; font-size: 1.75rem; font-weight: 800; color: var(--t1); letter-spacing: -0.5px; }
+.parche-desc { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin: 0.25rem 0 0.5rem; }
+.header-meta { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+
+.parche-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+.invite-card { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.invite-label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--t3); margin-bottom: 0.25rem; }
+.invite-code { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--t1); letter-spacing: 3px; }
+.copy-btn {
+  display: flex; align-items: center; gap: 0.4rem;
+  background: var(--bg-field); border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 0.55rem 0.9rem;
+  color: var(--t2); font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  transition: all var(--tr); white-space: nowrap; flex-shrink: 0;
+}
+.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+.copy-btn.copied { border-color: rgba(34,197,94,0.4); color: #4ade80; }
+
+.section { display: flex; flex-direction: column; gap: 0.75rem; }
+.section-header { display: flex; align-items: center; justify-content: space-between; }
+.section-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--t1); }
+.btn-new-plan { background: rgba(255,107,43,0.1); border: 1px solid rgba(255,107,43,0.25); border-radius: 50px; padding: 0.4rem 0.9rem; color: var(--accent); font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all var(--tr); }
+.btn-new-plan:hover { background: rgba(255,107,43,0.2); }
+
+.plan-card {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1rem 1.1rem; cursor: pointer;
+  transition: all var(--tr); text-decoration: none;
+}
+.plan-card:hover { border-color: rgba(255,255,255,0.15); transform: translateX(3px); }
+.plan-state { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.3rem; }
+.plan-state-label { font-size: 0.72rem; font-weight: 600; color: var(--t2); }
+.plan-title { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--t1); }
+.plan-date { font-size: 0.78rem; color: var(--t3); margin-top: 0.2rem; display: block; }
+.plan-arrow { color: var(--t3); flex-shrink: 0; }
+
+.members-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.member-row { display: flex; align-items: center; gap: 0.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 0.75rem 1rem; }
+.member-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.member-name { flex: 1; font-size: 0.9rem; font-weight: 600; color: var(--t1); }

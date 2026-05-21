@@ -1,0 +1,108 @@
+<div class="app-shell">
+  <div class="create-plan-page">
+
+    <header class="page-nav">
+      <button class="back-btn" [routerLink]="['/parche', parcheId]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <h1 class="nav-title">Nuevo plan</h1>
+      <span style="width:36px"></span>
+    </header>
+
+    <div class="create-plan-body">
+      <form (ngSubmit)="onCreate()">
+
+        <!-- Info básica -->
+        <div class="form-block card">
+          <h3 class="block-label"><span class="block-num">01</span> Información del plan</h3>
+
+          <div class="fields-col">
+            <div class="field-group" [class.focused]="focused['title']">
+              <label class="field-label">Título del plan *</label>
+              <div class="field-wrap">
+                <span class="field-icon">📋</span>
+                <input class="field-input" type="text" [(ngModel)]="plan.title" name="title"
+                       placeholder="Ej: Cine del viernes"
+                       (focus)="focused['title']=true" (blur)="focused['title']=false" required />
+              </div>
+            </div>
+
+            <div class="field-group" [class.focused]="focused['desc']">
+              <label class="field-label">Descripción</label>
+              <div class="field-wrap textarea-wrap">
+                <textarea class="field-input textarea" [(ngModel)]="plan.description" name="desc" rows="2"
+                          placeholder="¿De qué va este plan?"
+                          (focus)="focused['desc']=true" (blur)="focused['desc']=false"></textarea>
+              </div>
+            </div>
+
+            <div class="date-row">
+              <div class="field-group" [class.focused]="focused['startDate']">
+                <label class="field-label">Fecha inicio</label>
+                <div class="field-wrap">
+                  <input class="field-input" type="date" [(ngModel)]="plan.startDate" name="startDate"
+                         (focus)="focused['startDate']=true" (blur)="focused['startDate']=false" />
+                </div>
+              </div>
+              <div class="field-group" [class.focused]="focused['endDate']">
+                <label class="field-label">Fecha fin</label>
+                <div class="field-wrap">
+                  <input class="field-input" type="date" [(ngModel)]="plan.endDate" name="endDate"
+                         (focus)="focused['endDate']=true" (blur)="focused['endDate']=false" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opciones -->
+        <div class="form-block card">
+          <div class="block-header">
+            <h3 class="block-label"><span class="block-num">02</span> Opciones <span class="options-count">(mín. 3)</span></h3>
+            <button type="button" class="add-option-btn" (click)="addOption()">+ Agregar</button>
+          </div>
+
+          <div class="options-list">
+            <div class="option-card" *ngFor="let opt of plan.options; let i = index">
+              <div class="option-header">
+                <span class="option-num">Opción {{ i + 1 }}</span>
+                <button type="button" class="remove-opt-btn" (click)="removeOption(i)" *ngIf="plan.options.length > 3">✕</button>
+              </div>
+              <div class="option-fields">
+                <div class="field-group" [class.focused]="focused['place'+i]">
+                  <label class="field-label">Lugar</label>
+                  <div class="field-wrap">
+                    <span class="field-icon">📍</span>
+                    <input class="field-input" type="text" [(ngModel)]="opt.place" [name]="'place'+i"
+                           placeholder="Ej: Parque Lleras"
+                           (focus)="focused['place'+i]=true" (blur)="focused['place'+i]=false" />
+                  </div>
+                </div>
+                <div class="field-group" [class.focused]="focused['time'+i]">
+                  <label class="field-label">Fecha y hora</label>
+                  <div class="field-wrap">
+                    <span class="field-icon">🕐</span>
+                    <input class="field-input" type="datetime-local" [(ngModel)]="opt.datetime" [name]="'time'+i"
+                           (focus)="focused['time'+i]=true" (blur)="focused['time'+i]=false" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="error-banner" *ngIf="errorMsg">⚠️ {{ errorMsg }}</div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-ghost" [routerLink]="['/parche', parcheId]">Cancelar</button>
+          <button type="submit" class="btn-primary" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Crear plan</span>
+            <span class="dots-loader" *ngIf="isLoading"><span></span><span></span><span></span></span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <app-navbar />
+</div>

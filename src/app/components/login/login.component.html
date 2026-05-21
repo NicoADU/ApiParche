@@ -14,21 +14,6 @@
       </div>
       <h1 class="brand-name">Parche<span>Plan</span></h1>
       <p class="brand-tagline">El único lugar donde los planes<br><em>sí se concretan.</em></p>
-
-<!--      <div class="feature-pills">-->
-<!--        <div class="pill">-->
-<!--          <span class="pill-icon">🗳️</span>-->
-<!--          <span>Votá por el lugar y la hora</span>-->
-<!--        </div>-->
-<!--        <div class="pill">-->
-<!--          <span class="pill-icon">📍</span>-->
-<!--          <span>Confirmá asistencia</span>-->
-<!--        </div>-->
-<!--        <div class="pill">-->
-<!--          <span class="pill-icon">🏆</span>-->
-<!--          <span>Rankings de tu parche</span>-->
-<!--        </div>-->
-<!--      </div>-->
     </div>
 
     <div class="brand-deco">
@@ -104,14 +89,6 @@
           </div>
         </div>
 
-<!--        <div class="form-options">-->
-<!--          <label class="checkbox-wrap">-->
-<!--            <input type="checkbox" [(ngModel)]="loginData.remember" name="remember" />-->
-<!--            <span class="checkbox-custom"></span>-->
-<!--            <span class="checkbox-label">Recuérdame</span>-->
-<!--          </label>-->
-<!--          <a href="#" class="forgot-link">¿Olvidaste tu clave?</a>-->
-<!--        </div>-->
 
         <div class="error-banner" *ngIf="errorMessage">
           <span>⚠️ {{ errorMessage }}</span>
@@ -126,13 +103,10 @@
 
       </form>
 
-      <div class="form-divider">
-        <span>¿Primera vez?</span>
+      <div class="form-footer">
+        <p class="footer-text">¿No tienes cuenta? <a routerLink="/register" class="footer-link">Crear cuenta</a></p>
       </div>
 
-      <a routerLink="/register" class="btn-secondary">
-        Crear mi cuenta
-      </a>
     </div>
   </main>
 </div>

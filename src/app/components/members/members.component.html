@@ -1,0 +1,51 @@
+<div class="app-shell">
+  <div class="members-page">
+
+    <header class="page-nav">
+      <button class="back-btn" [routerLink]="['/parche', parcheId]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <h1 class="nav-title">Gestión de miembros</h1>
+      <span style="width:36px"></span>
+    </header>
+
+    <div class="members-body">
+      <p class="members-count">{{ members.length }} miembro{{ members.length !== 1 ? 's' : '' }}</p>
+
+      <div class="member-item" *ngFor="let m of members">
+        <img class="member-avatar" [src]="m.avatarUrl || 'https://api.dicebear.com/7.x/thumbs/svg?seed='+m.name" [alt]="m.name" />
+        <div class="member-info">
+          <span class="member-name">{{ m.name }}</span>
+          <span class="member-program">{{ m.program }}</span>
+        </div>
+        <div class="member-actions" *ngIf="m.role !== 'Owner'">
+          <span class="badge" [class]="'badge-'+m.role.toLowerCase()">{{ m.role }}</span>
+          <button class="action-dot-btn" (click)="toggleMenu(m)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+          </button>
+          <div class="dropdown" *ngIf="m.menuOpen">
+            <button class="dropdown-item" (click)="promoteToggle(m)">
+              {{ m.role === 'Member' ? '⬆️ Promover a Moderador' : '⬇️ Bajar a Member' }}
+            </button>
+            <button class="dropdown-item danger" (click)="confirmRemove(m)">🚫 Remover del parche</button>
+          </div>
+        </div>
+        <span class="badge badge-owner" *ngIf="m.role === 'Owner'">Owner</span>
+      </div>
+    </div>
+
+
+    <div class="modal-overlay" *ngIf="showConfirm" (click)="showConfirm=false">
+      <div class="modal-box" (click)="$event.stopPropagation()">
+        <h3 class="modal-title">¿Remover miembro?</h3>
+        <p class="modal-sub">Vas a remover a <strong>{{ confirmTarget?.name }}</strong> del parche. Esta acción no se puede deshacer.</p>
+        <div class="modal-actions">
+          <button class="btn-ghost" style="width:auto;padding:0.75rem 1.25rem" (click)="showConfirm=false">Cancelar</button>
+          <button class="btn-danger" style="width:auto;padding:0.75rem 1.25rem" (click)="removeMember()">Sí, remover</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <app-navbar />
+</div>

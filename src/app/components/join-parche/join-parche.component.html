@@ -1,0 +1,51 @@
+<div class="app-shell">
+  <div class="join-page">
+    <div class="bg-blob"></div>
+
+    <div class="join-inner">
+      <button class="back-btn" routerLink="/home">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div class="join-hero">
+        <span class="hero-emoji">🔗</span>
+        <h1 class="page-title">Únete a un parche</h1>
+        <p class="page-sub">Pide el código a quien creó el parche e ingrésalo acá.</p>
+      </div>
+
+      <form class="join-form" (ngSubmit)="onJoin()">
+        <div class="code-field" [class.focused]="isFocused" [class.error]="errorMsg">
+          <input
+            class="code-input"
+            type="text"
+            [(ngModel)]="code"
+            name="code"
+            placeholder="XXXX-XXXX"
+            maxlength="9"
+            (focus)="isFocused=true"
+            (blur)="isFocused=false"
+            (input)="onInput()"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <p class="code-hint">El código tiene el formato <strong>XXXX-XXXX</strong></p>
+
+        <div class="error-banner" *ngIf="errorMsg">⚠️ {{ errorMsg }}</div>
+
+        <button type="submit" class="btn-primary" [disabled]="isLoading || code.length < 9">
+          <span *ngIf="!isLoading">Entrar al parche</span>
+          <span class="dots-loader" *ngIf="isLoading"><span></span><span></span><span></span></span>
+        </button>
+      </form>
+
+      <div class="success-card" *ngIf="joined">
+        <span class="success-icon">🎉</span>
+        <h3>¡Bienvenido al parche!</h3>
+        <p>Ahora eres parte de <strong>{{ joinedParcheName }}</strong>.</p>
+        <button class="btn-primary" routerLink="/home">Ver mis parches</button>
+      </div>
+    </div>
+  </div>
+  <app-navbar />
+</div>

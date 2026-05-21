@@ -541,18 +541,23 @@
 
 .form-footer {
   text-align: center;
-  margin-top: 1.25rem;
-  font-size: 0.85rem;
-  color: var(--text-faint);
+  margin-top: 1.5rem;
 }
 
-.form-footer a {
+.footer-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.footer-link {
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
+  transition: color var(--transition);
 }
 
-.form-footer a:hover {
+.footer-link:hover {
+  color: var(--accent-2);
   text-decoration: underline;
 }
 
