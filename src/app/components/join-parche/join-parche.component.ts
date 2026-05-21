@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-join-parche',
@@ -19,6 +21,8 @@ export class JoinParcheComponent {
   joined = false;
   joinedParcheName = '';
 
+  constructor(private apiService: ApiService, private router: Router) {}
+
   onInput() {
     this.errorMsg = '';
 
@@ -28,14 +32,17 @@ export class JoinParcheComponent {
   }
 
   async onJoin() {
-    this.isLoading = true; this.errorMsg = '';
+    this.isLoading = true;
+    this.errorMsg = '';
     try {
-
-      await new Promise(r => setTimeout(r, 1400));
-      this.joinedParcheName = 'Los del Bloque 5';
+      const parche = await firstValueFrom(this.apiService.joinParche(this.code));
+      this.joinedParcheName = parche.name;
       this.joined = true;
+      this.router.navigate(['/parche', parche.id]);
     } catch (e: any) {
       this.errorMsg = e?.message ?? 'Código inválido o expirado.';
-    } finally { this.isLoading = false; }
+    } finally {
+      this.isLoading = false;
+    }
   }
 }

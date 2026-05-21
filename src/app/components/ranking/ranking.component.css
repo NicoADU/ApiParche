@@ -1,0 +1,85 @@
+.ranking-page {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+.page-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.nav-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.nav-sub {
+  margin: 0.25rem 0 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+.card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+}
+.stats-grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.stat-card {
+  padding: 1rem;
+  border-radius: 18px;
+  background: #f5f7ff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.stat-label {
+  color: #666;
+  font-size: 0.95rem;
+}
+.ranking-list h2 {
+  margin: 0 0 1rem;
+}
+.ranking-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #f0f1f6;
+}
+.rank-index {
+  color: #5b7cfe;
+  font-weight: 700;
+}
+.rank-name {
+  font-weight: 600;
+}
+.rank-values {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pill {
+  background: #eef1ff;
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+}
+.pill-soft {
+  background: #fff7e1;
+}
+.score {
+  font-weight: 700;
+  color: #333;
+}
+.back-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.5rem;
+}

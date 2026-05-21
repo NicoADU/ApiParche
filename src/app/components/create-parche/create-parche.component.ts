@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { ApiService } from '../../services/api.service';
 
 interface ParcheForm {
   name: string;
@@ -37,7 +39,7 @@ export class CreateParcheComponent {
     { url: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&q=60', label: 'Música' },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private apiService: ApiService) {}
 
   selectCover(url: string): void {
     this.parche.coverImageUrl = url;
@@ -63,11 +65,8 @@ export class CreateParcheComponent {
     this.errorMessage = '';
 
     try {
-
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Parche a crear:', this.parche);
-      this.router.navigate(['/home']);
-
+      const created = await firstValueFrom(this.apiService.createParche(this.parche));
+      this.router.navigate(['/parche', created.id]);
     } catch (error: any) {
       this.errorMessage = error?.message ?? 'Error al crear el parche. Intenta de nuevo.';
     } finally {

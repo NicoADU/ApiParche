@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, ActivatedRoute } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-parche-detail',
@@ -13,36 +15,27 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 export class ParcheDetailComponent implements OnInit {
   parcheId = '';
   parche: any = null;
-  isOwner = true;
+  isOwner = false;
   isMod = false;
   codeCopied = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
   async ngOnInit() {
     this.parcheId = this.route.snapshot.paramMap.get('id') ?? '';
-
-    await new Promise(r => setTimeout(r, 800));
-    this.parche = {
-      name: 'Los del Bloque 5', description: 'El parche de los que siempre quedan para el café post-clase.',
-      coverUrl: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70',
-      inviteCode: 'BLQ5-2K9X',
-      members: [
-        { name: 'Juan Restrepo', role: 'Owner', avatarUrl: '' },
-        { name: 'Valeria Torres', role: 'Moderator', avatarUrl: '' },
-        { name: 'Camilo García', role: 'Member', avatarUrl: '' },
-        { name: 'Sofía Mejía', role: 'Member', avatarUrl: '' },
-      ],
-      plans: [
-        { id: 'p1', title: 'Cine del viernes', stateLabel: 'Votando', stateClass: 'voting', dateRange: '23 - 25 May' },
-        { id: 'p2', title: 'Asado fin de semestre', stateLabel: 'Borrador', stateClass: 'draft', dateRange: '1 - 5 Jun' },
-      ],
-    };
+    this.parche = await firstValueFrom(this.apiService.getParcheDetail(this.parcheId));
+    if (this.parche) {
+      this.isOwner = this.parche.role === 'Owner';
+      this.isMod = this.parche.role === 'Moderator';
+    }
   }
 
   copyCode() {
+    if (!this.parche?.inviteCode) {
+      return;
+    }
     navigator.clipboard.writeText(this.parche.inviteCode);
     this.codeCopied = true;
-    setTimeout(() => this.codeCopied = false, 2500);
+    setTimeout(() => (this.codeCopied = false), 2500);
   }
 }

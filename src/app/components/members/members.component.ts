@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, ActivatedRoute } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-members',
@@ -16,16 +18,11 @@ export class MembersComponent implements OnInit {
   showConfirm = false;
   confirmTarget: any = null;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
   async ngOnInit() {
     this.parcheId = this.route.snapshot.paramMap.get('id') ?? '';
-    this.members = [
-      { id: '1', name: 'Juan Restrepo', program: 'Ing. Sistemas', role: 'Owner', avatarUrl: '', menuOpen: false },
-      { id: '2', name: 'Valeria Torres', program: 'Diseño Gráfico', role: 'Moderator', avatarUrl: '', menuOpen: false },
-      { id: '3', name: 'Camilo García', program: 'Administración', role: 'Member', avatarUrl: '', menuOpen: false },
-      { id: '4', name: 'Sofía Mejía', program: 'Psicología', role: 'Member', avatarUrl: '', menuOpen: false },
-    ];
+    this.members = await firstValueFrom(this.apiService.getMembers(this.parcheId));
   }
 
   toggleMenu(member: any) {
@@ -33,9 +30,9 @@ export class MembersComponent implements OnInit {
     member.menuOpen = !member.menuOpen;
   }
 
-  promoteToggle(member: any) {
-    member.role = member.role === 'Member' ? 'Moderator' : 'Member';
-    member.menuOpen = false;
+  async promoteToggle(member: any) {
+    const nextRole = member.role === 'Member' ? 'Moderator' : 'Member';
+    this.members = await firstValueFrom(this.apiService.updateMemberRole(this.parcheId, member.id, nextRole));
   }
 
   confirmRemove(member: any) {
@@ -44,8 +41,11 @@ export class MembersComponent implements OnInit {
     member.menuOpen = false;
   }
 
-  removeMember() {
-    this.members = this.members.filter(m => m !== this.confirmTarget);
+  async removeMember() {
+    if (!this.confirmTarget) {
+      return;
+    }
+    this.members = await firstValueFrom(this.apiService.removeMember(this.parcheId, this.confirmTarget.id));
     this.showConfirm = false;
     this.confirmTarget = null;
   }

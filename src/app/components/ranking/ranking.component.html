@@ -1,0 +1,47 @@
+<div class="app-shell">
+  <div class="ranking-page">
+    <header class="page-nav">
+      <button class="back-btn" [routerLink]="['/parche', parcheId]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div>
+        <h1 class="nav-title">Ranking del parche</h1>
+        <p class="nav-sub">Puntajes de organización y ghost score.</p>
+      </div>
+      <span style="width:36px"></span>
+    </header>
+
+    <div class="stats-grid card">
+      <div class="stat-card">
+        <span class="stat-label">Organizer score</span>
+        <strong>{{ stats.organizerScore }}</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Ghost score</span>
+        <strong>{{ stats.ghostScore }}</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Planes agendados</span>
+        <strong>{{ stats.plansScheduled }}</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Asistencia</span>
+        <strong>{{ stats.attendanceRate }}</strong>
+      </div>
+    </div>
+
+    <div class="ranking-list card">
+      <h2>Top miembros</h2>
+      <div class="ranking-row" *ngFor="let item of ranking; index as i">
+        <div class="rank-index">{{ i + 1 }}</div>
+        <div class="rank-name">{{ item.name }}</div>
+        <div class="rank-values">
+          <span class="pill">Org: {{ item.organizer }}</span>
+          <span class="pill pill-soft">Ghost: {{ item.ghost }}</span>
+          <span class="score">{{ item.score }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-navbar />
+</div>

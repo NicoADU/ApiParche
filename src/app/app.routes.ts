@@ -8,17 +8,27 @@ import { JoinParcheComponent } from './components/join-parche/join-parche.compon
 import { ParcheDetailComponent } from './components/parche-detail/parche-detail.component';
 import { MembersComponent } from './components/members/members.component';
 import { CreatePlanComponent } from './components/create-plan/create-plan.component';
+import { PlanDetailComponent } from './components/plan-detail/plan-detail.component';
+import { RankingComponent } from './components/ranking/ranking.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'home', component: DashboardComponent },
+  { path: 'dashboard', redirectTo: 'home', pathMatch: 'full' },
   { path: 'profile', component: ProfileComponent },
-  { path: 'create-parche', component: CreateParcheComponent },
-  { path: 'join-parche', component: JoinParcheComponent },
-  { path: 'parche-detail/:id', component: ParcheDetailComponent },
-  { path: 'members/:id', component: MembersComponent },
-  { path: 'create-plan/:parcheId', component: CreatePlanComponent },
+  { path: 'create', component: CreateParcheComponent },
+  { path: 'create-parche', redirectTo: 'create', pathMatch: 'full' },
+  { path: 'join', component: JoinParcheComponent },
+  { path: 'join-parche', redirectTo: 'join', pathMatch: 'full' },
+  { path: 'parche-detail/:id', redirectTo: 'parche/:id', pathMatch: 'full' },
+  { path: 'parche/:id', component: ParcheDetailComponent },
+  { path: 'parche/:id/members', component: MembersComponent },
+  { path: 'members/:id', redirectTo: 'parche/:id/members', pathMatch: 'full' },
+  { path: 'parche/:parcheId/create-plan', component: CreatePlanComponent },
+  { path: 'create-plan/:parcheId', redirectTo: 'parche/:parcheId/create-plan', pathMatch: 'full' },
+  { path: 'parche/:parcheId/plan/:planId', component: PlanDetailComponent },
+  { path: 'parche/:parcheId/ranking', component: RankingComponent },
   { path: '**', redirectTo: 'login' }
 ];

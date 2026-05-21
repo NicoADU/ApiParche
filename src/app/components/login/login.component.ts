@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { ApiService } from '../../services/api.service';
 
 interface LoginData {
   email: string;
@@ -25,7 +27,7 @@ export class LoginComponent {
   isLoading = false;
   errorMessage = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private apiService: ApiService) {}
 
   async onLogin(): Promise<void> {
     if (!this.loginData.email || !this.loginData.password) {
@@ -37,11 +39,8 @@ export class LoginComponent {
     this.errorMessage = '';
 
     try {
-
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Login con:', this.loginData);
+      await firstValueFrom(this.apiService.login(this.loginData.email, this.loginData.password));
       this.router.navigate(['/home']);
-
     } catch (error: any) {
       this.errorMessage = error?.message ?? 'Error al iniciar sesión. Intenta de nuevo.';
     } finally {

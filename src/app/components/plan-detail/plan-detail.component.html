@@ -1,0 +1,99 @@
+<div class="app-shell">
+  <div class="plan-detail-page" *ngIf="plan">
+    <header class="page-nav">
+      <button class="back-btn" [routerLink]="['/parche', parcheId]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="nav-title-block">
+        <h1 class="nav-title">{{ plan.title }}</h1>
+        <span class="nav-sub">Plan dentro del parche</span>
+      </div>
+      <span style="width:36px"></span>
+    </header>
+
+    <section class="plan-summary card">
+      <div class="plan-summary-left">
+        <span class="badge badge-voting">{{ plan.stateLabel }}</span>
+        <h2>{{ plan.description }}</h2>
+        <p class="plan-range">{{ plan.dateRange }}</p>
+      </div>
+      <div class="plan-summary-right">
+        <button class="btn-secondary" [routerLink]="['/parche', parcheId, 'ranking']">Ver ranking</button>
+      </div>
+    </section>
+
+    <section class="section card">
+      <div class="section-header">
+        <div>
+          <h3>Votación</h3>
+          <p class="section-sub">Elige tu opción favorita y revisa los resultados en tiempo real.</p>
+        </div>
+        <button class="btn-ghost" (click)="changePlanState()" *ngIf="plan.ownerMode">Avanzar estado</button>
+      </div>
+
+      <div class="vote-options">
+        <div class="vote-option" *ngFor="let option of plan.options" [class.selected]="selectedOptionId === option.id">
+          <div class="vote-main" (click)="vote(option)">
+            <div>
+              <span class="option-label">{{ option.place }}</span>
+              <p class="option-time">{{ option.datetime }}</p>
+            </div>
+            <span class="option-badge">{{ option.votes }} votos</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width]="totalVotes ? (option.votes / totalVotes * 100) + '%' : '0%'">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vote-actions">
+        <button class="btn-primary" (click)="submitVote()" [disabled]="!selectedOptionId">Confirmar voto</button>
+        <span class="helper-text">{{ plan.winnerNote }}</span>
+      </div>
+    </section>
+
+    <section class="section card">
+      <div class="section-header">
+        <div>
+          <h3>Asistencia</h3>
+          <p class="section-sub">Confirma si vas a asistir y revisa el listado del parche.</p>
+        </div>
+      </div>
+
+      <div class="attendance-controls">
+        <button class="attendance-btn" [class.active]="attendanceChoice === 'Yes'" (click)="updateAttendance('Yes')">Sí</button>
+        <button class="attendance-btn" [class.active]="attendanceChoice === 'Maybe'" (click)="updateAttendance('Maybe')">Tal vez</button>
+        <button class="attendance-btn" [class.active]="attendanceChoice === 'No'" (click)="updateAttendance('No')">No</button>
+      </div>
+      <button class="btn-primary" (click)="confirmAttendance()" [disabled]="!attendanceChoice">Guardar respuesta</button>
+
+      <div class="attendance-list">
+        <h4>Registro de asistencia</h4>
+        <div class="attendance-row" *ngFor="let item of plan.attendance">
+          <span>{{ item.name }}</span>
+          <span class="status-tag" [class.yes]="item.status === 'Yes'" [class.no]="item.status === 'No'" [class.maybe]="item.status === 'Maybe'">{{ item.status }}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section card">
+      <div class="section-header">
+        <div>
+          <h3>Check-in</h3>
+          <p class="section-sub">Haz check-in en la ventana de llegada para que tu asistencia sea válida.</p>
+        </div>
+      </div>
+
+      <div class="checkin-row">
+        <div>
+          <span class="checkin-label">Ventana</span>
+          <p>{{ plan.checkinWindow }}</p>
+        </div>
+        <button class="btn-primary" (click)="doCheckin()" [disabled]="checkedIn">{{ checkedIn ? 'Check-in registrado' : 'Hacer check-in' }}</button>
+      </div>
+    </section>
+
+  </div>
+  <app-navbar />
+</div>

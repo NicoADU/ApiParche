@@ -1,0 +1,617 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "name": "Juan Restrepo",
+      "email": "juan.restrepo@universidad.edu",
+      "program": "Ingeniería de Sistemas",
+      "avatarUrl": "",
+      "role": "Owner",
+      "password": "password"
+    },
+    {
+      "id": "u2",
+      "name": "Valeria Torres",
+      "email": "valeria.torres@universidad.edu",
+      "program": "Diseño Gráfico",
+      "avatarUrl": "",
+      "role": "Moderator",
+      "password": "password"
+    },
+    {
+      "id": "u3",
+      "name": "Camilo García",
+      "email": "camilo.garcia@universidad.edu",
+      "program": "Administración",
+      "avatarUrl": "",
+      "role": "Member",
+      "password": "password"
+    },
+    {
+      "id": "u4",
+      "name": "Sofía Mejía",
+      "email": "sofia.mejia@universidad.edu",
+      "program": "Psicología",
+      "avatarUrl": "",
+      "role": "Member",
+      "password": "password"
+    },
+    {
+      "id": "u5",
+      "name": "Ana Mosquera",
+      "email": "ana.mosquera@universidad.edu",
+      "program": "Comunicación",
+      "avatarUrl": "",
+      "role": "Member",
+      "password": "password"
+    },
+    {
+      "id": "u6",
+      "name": "Nicolás Rojas",
+      "email": "nicolas.rojas@universidad.edu",
+      "program": "Diseño Industrial",
+      "avatarUrl": "",
+      "role": "Member",
+      "password": "password"
+    },
+    {
+      "id": "u7",
+      "name": "Laura Mejía",
+      "email": "laura.mejia@universidad.edu",
+      "program": "Biología",
+      "avatarUrl": "",
+      "role": "Moderator",
+      "password": "password"
+    },
+    {
+      "id": "u8",
+      "name": "Diego Arango",
+      "email": "diego.arango@universidad.edu",
+      "program": "Filosofía",
+      "avatarUrl": "",
+      "role": "Member",
+      "password": "password"
+    },
+    {
+      "id": "u9",
+      "name": "Catalina Pérez",
+      "email": "catalina.perez@universidad.edu",
+      "program": "Economía",
+      "avatarUrl": "",
+      "role": "Member",
+      "password": "password"
+    },
+    {
+      "id": "u10",
+      "name": "Mario Sánchez",
+      "email": "mario.sanchez@universidad.edu",
+      "program": "Arquitectura",
+      "avatarUrl": "",
+      "role": "Member",
+      "password": "password"
+    }
+  ],
+  "parches": [
+    {
+      "id": "1",
+      "name": "Los del Bloque 5",
+      "description": "El parche de los que siempre quedan para el café post-clase.",
+      "coverUrl": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70",
+      "memberCount": 6,
+      "activePlans": 4,
+      "inviteCode": "BLQ5-2K9X",
+      "members": [
+        {
+          "id": "u1",
+          "name": "Juan Restrepo",
+          "email": "juan.restrepo@universidad.edu",
+          "program": "Ingeniería de Sistemas",
+          "avatarUrl": "",
+          "role": "Owner"
+        },
+        {
+          "id": "u2",
+          "name": "Valeria Torres",
+          "email": "valeria.torres@universidad.edu",
+          "program": "Diseño Gráfico",
+          "avatarUrl": "",
+          "role": "Moderator"
+        },
+        {
+          "id": "u3",
+          "name": "Camilo García",
+          "email": "camilo.garcia@universidad.edu",
+          "program": "Administración",
+          "avatarUrl": "",
+          "role": "Member"
+        },
+        {
+          "id": "u4",
+          "name": "Sofía Mejía",
+          "email": "sofia.mejia@universidad.edu",
+          "program": "Psicología",
+          "avatarUrl": "",
+          "role": "Member"
+        },
+        {
+          "id": "u5",
+          "name": "Ana Mosquera",
+          "email": "ana.mosquera@universidad.edu",
+          "program": "Comunicación",
+          "avatarUrl": "",
+          "role": "Member"
+        },
+        {
+          "id": "u6",
+          "name": "Nicolás Rojas",
+          "email": "nicolas.rojas@universidad.edu",
+          "program": "Diseño Industrial",
+          "avatarUrl": "",
+          "role": "Member"
+        }
+      ],
+      "plans": [
+        {
+          "id": "p1",
+          "title": "Cine del viernes",
+          "state": "VotingOpen",
+          "stateLabel": "Votación abierta",
+          "stateClass": "voting",
+          "dateRange": "23 - 25 May"
+        },
+        {
+          "id": "p2",
+          "title": "Asado fin de semestre",
+          "state": "Draft",
+          "stateLabel": "Borrador",
+          "stateClass": "draft",
+          "dateRange": "1 - 5 Jun"
+        },
+        {
+          "id": "p4",
+          "title": "Paseo al lago",
+          "state": "VotingClosed",
+          "stateLabel": "Votación cerrada",
+          "stateClass": "voting",
+          "dateRange": "30 May"
+        },
+        {
+          "id": "p5",
+          "title": "Maratón de series",
+          "state": "Scheduled",
+          "stateLabel": "Agendado",
+          "stateClass": "scheduled",
+          "dateRange": "26 May"
+        },
+        {
+          "id": "p6",
+          "title": "Quedada en la biblioteca",
+          "state": "Scheduled",
+          "stateLabel": "Agendado",
+          "stateClass": "scheduled",
+          "dateRange": "24 May"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Café Estudiantil",
+      "description": "El parche para los que siempre quedan en la cafetería.",
+      "coverUrl": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=70",
+      "memberCount": 5,
+      "activePlans": 4,
+      "inviteCode": "CFE2-BD98",
+      "members": [
+        {
+          "id": "u1",
+          "name": "Juan Restrepo",
+          "email": "juan.restrepo@universidad.edu",
+          "program": "Ingeniería de Sistemas",
+          "avatarUrl": "",
+          "role": "Owner"
+        },
+        {
+          "id": "u7",
+          "name": "Laura Mejía",
+          "email": "laura.mejia@universidad.edu",
+          "program": "Biología",
+          "avatarUrl": "",
+          "role": "Moderator"
+        },
+        {
+          "id": "u8",
+          "name": "Diego Arango",
+          "email": "diego.arango@universidad.edu",
+          "program": "Filosofía",
+          "avatarUrl": "",
+          "role": "Member"
+        },
+        {
+          "id": "u9",
+          "name": "Catalina Pérez",
+          "email": "catalina.perez@universidad.edu",
+          "program": "Economía",
+          "avatarUrl": "",
+          "role": "Member"
+        },
+        {
+          "id": "u10",
+          "name": "Mario Sánchez",
+          "email": "mario.sanchez@universidad.edu",
+          "program": "Arquitectura",
+          "avatarUrl": "",
+          "role": "Member"
+        }
+      ],
+      "plans": [
+        {
+          "id": "p3",
+          "title": "Tour por la ciudad",
+          "state": "VotingClosed",
+          "stateLabel": "Votación cerrada",
+          "stateClass": "voting",
+          "dateRange": "28 May"
+        },
+        {
+          "id": "p7",
+          "title": "Desayuno universitario",
+          "state": "Scheduled",
+          "stateLabel": "Agendado",
+          "stateClass": "scheduled",
+          "dateRange": "27 May"
+        },
+        {
+          "id": "p8",
+          "title": "Estudio en grupo",
+          "state": "VotingOpen",
+          "stateLabel": "Votación abierta",
+          "stateClass": "voting",
+          "dateRange": "25 - 26 May"
+        },
+        {
+          "id": "p9",
+          "title": "Noche de trivia",
+          "state": "Draft",
+          "stateLabel": "Borrador",
+          "stateClass": "draft",
+          "dateRange": "3 Jun"
+        },
+        {
+          "id": "p10",
+          "title": "Tour de cafecitos",
+          "state": "Scheduled",
+          "stateLabel": "Agendado",
+          "stateClass": "scheduled",
+          "dateRange": "29 May"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Deportes EAFIT",
+      "description": "El parche para organizar deporte, partidos y reuniones activas.",
+      "coverUrl": "https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=600&q=70",
+      "memberCount": 4,
+      "activePlans": 4,
+      "inviteCode": "DEP3-XY12",
+      "members": [
+        {
+          "id": "u1",
+          "name": "Juan Restrepo",
+          "email": "juan.restrepo@universidad.edu",
+          "program": "Ingeniería de Sistemas",
+          "avatarUrl": "",
+          "role": "Owner"
+        },
+        {
+          "id": "u2",
+          "name": "Valeria Torres",
+          "email": "valeria.torres@universidad.edu",
+          "program": "Diseño Gráfico",
+          "avatarUrl": "",
+          "role": "Moderator"
+        },
+        {
+          "id": "u6",
+          "name": "Nicolás Rojas",
+          "email": "nicolas.rojas@universidad.edu",
+          "program": "Diseño Industrial",
+          "avatarUrl": "",
+          "role": "Member"
+        },
+        {
+          "id": "u8",
+          "name": "Diego Arango",
+          "email": "diego.arango@universidad.edu",
+          "program": "Filosofía",
+          "avatarUrl": "",
+          "role": "Member"
+        }
+      ],
+      "plans": [
+        {
+          "id": "p11",
+          "title": "Partido de fútbol",
+          "state": "VotingClosed",
+          "stateLabel": "Votación cerrada",
+          "stateClass": "voting",
+          "dateRange": "26 May"
+        },
+        {
+          "id": "p12",
+          "title": "Caminata matutina",
+          "state": "VotingOpen",
+          "stateLabel": "Votación abierta",
+          "stateClass": "voting",
+          "dateRange": "24 May"
+        },
+        {
+          "id": "p13",
+          "title": "Yoga en el parque",
+          "state": "Draft",
+          "stateLabel": "Borrador",
+          "stateClass": "draft",
+          "dateRange": "31 May"
+        },
+        {
+          "id": "p14",
+          "title": "Duelo de baloncesto",
+          "state": "Scheduled",
+          "stateLabel": "Agendado",
+          "stateClass": "scheduled",
+          "dateRange": "30 May"
+        }
+      ]
+    }
+  ],
+  "planDetails": {
+    "p1": {
+      "id": "p1",
+      "title": "Cine del viernes",
+      "description": "Escoge la mejor opción de hora y lugar para ir al cine después de clases.",
+      "state": "VotingOpen",
+      "stateLabel": "Votación abierta",
+      "stateClass": "voting",
+      "dateRange": "23 - 25 May",
+      "options": [
+        { "id": "o1", "place": "Parque Lleras", "datetime": "2026-05-23 18:30", "votes": 9 },
+        { "id": "o2", "place": "Museo del Oro", "datetime": "2026-05-24 16:00", "votes": 7 },
+        { "id": "o3", "place": "Cafetería Central", "datetime": "2026-05-25 19:00", "votes": 4 }
+      ],
+      "attendance": [
+        { "name": "Juan Restrepo", "status": "Yes" },
+        { "name": "Valeria Torres", "status": "Maybe" },
+        { "name": "Camilo García", "status": "No" }
+      ],
+      "checkinWindow": "23 May · 18:15 - 18:45",
+      "winnerNote": "La opción con más votos lidera y se tomará como favorita. Si hay empate, gana la más temprana."
+    },
+    "p2": {
+      "id": "p2",
+      "title": "Asado fin de semestre",
+      "description": "Propón y vota el mejor día para celebrar el cierre del semestre.",
+      "state": "Draft",
+      "stateLabel": "Borrador",
+      "stateClass": "draft",
+      "dateRange": "1 - 5 Jun",
+      "options": [
+        { "id": "o4", "place": "Casa de Juan", "datetime": "2026-06-01 20:00", "votes": 0 },
+        { "id": "o5", "place": "Parqueadero U", "datetime": "2026-06-03 19:30", "votes": 0 },
+        { "id": "o6", "place": "Canchas del campus", "datetime": "2026-06-05 18:00", "votes": 0 }
+      ],
+      "attendance": [],
+      "checkinWindow": "01 Jun · 19:45 - 20:15",
+      "winnerNote": "La opción con más votos lidera y se tomará como favorita. Si hay empate, gana la más temprana."
+    },
+    "p3": {
+      "id": "p3",
+      "title": "Tour por la ciudad",
+      "description": "Decidamos juntos el mejor recorrido para el tour cultural.",
+      "state": "VotingClosed",
+      "stateLabel": "Votación cerrada",
+      "stateClass": "voting",
+      "dateRange": "28 May",
+      "options": [
+        { "id": "o7", "place": "Plaza Mayor", "datetime": "2026-05-28 10:00", "votes": 12 },
+        { "id": "o8", "place": "Museo Antropológico", "datetime": "2026-05-28 12:00", "votes": 8 },
+        { "id": "o9", "place": "Café Central", "datetime": "2026-05-28 15:00", "votes": 5 }
+      ],
+      "attendance": [
+        { "name": "Camilo García", "status": "Yes" }
+      ],
+      "checkinWindow": "28 May · 09:45 - 10:15",
+      "winnerNote": "La opción con más votos lidera y se tomará como favorita. Si hay empate, gana la más temprana."
+    },
+    "p4": {
+      "id": "p4",
+      "title": "Paseo al lago",
+      "description": "Un viaje tranquilo al lago para terminar la semana con buena energía.",
+      "state": "VotingClosed",
+      "stateLabel": "Votación cerrada",
+      "stateClass": "voting",
+      "dateRange": "30 May",
+      "options": [
+        { "id": "o10", "place": "Lago Verde", "datetime": "2026-05-30 09:00", "votes": 10 },
+        { "id": "o11", "place": "Lago Azul", "datetime": "2026-05-30 11:00", "votes": 6 },
+        { "id": "o12", "place": "Lago del Bosque", "datetime": "2026-05-30 13:00", "votes": 4 }
+      ],
+      "attendance": [
+        { "name": "Juan Restrepo", "status": "Yes" },
+        { "name": "Sofía Mejía", "status": "Maybe" }
+      ],
+      "checkinWindow": "30 May · 08:30 - 09:00",
+      "winnerNote": "La opción con más votos lidera y se tomará como favorita. Si hay empate, gana la más temprana."
+    },
+    "p5": {
+      "id": "p5",
+      "title": "Maratón de series",
+      "description": "Juntémonos para ver nuestras series favoritas y votar por el próximo maratón.",
+      "state": "Scheduled",
+      "stateLabel": "Agendado",
+      "stateClass": "scheduled",
+      "dateRange": "26 May",
+      "options": [
+        { "id": "o13", "place": "Casa de Juan", "datetime": "2026-05-26 18:00", "votes": 18 }
+      ],
+      "attendance": [
+        { "name": "Valeria Torres", "status": "Yes" },
+        { "name": "Ana Mosquera", "status": "Yes" }
+      ],
+      "checkinWindow": "26 May · 17:45 - 18:15",
+      "winnerNote": "Opción confirmada y lista para el plan."
+    },
+    "p6": {
+      "id": "p6",
+      "title": "Quedada en la biblioteca",
+      "description": "Una sesión de estudio colectivo con snacks y tiempos de repaso.",
+      "state": "Scheduled",
+      "stateLabel": "Agendado",
+      "stateClass": "scheduled",
+      "dateRange": "24 May",
+      "options": [
+        { "id": "o14", "place": "Biblioteca Central", "datetime": "2026-05-24 16:00", "votes": 14 }
+      ],
+      "attendance": [
+        { "name": "Nicolás Rojas", "status": "Yes" },
+        { "name": "Sofía Mejía", "status": "Yes" }
+      ],
+      "checkinWindow": "24 May · 15:30 - 16:00",
+      "winnerNote": "Sesión confirmada para repasar juntos."
+    },
+    "p7": {
+      "id": "p7",
+      "title": "Desayuno universitario",
+      "description": "Un desayuno para arrancar el día con energía antes de clases.",
+      "state": "Scheduled",
+      "stateLabel": "Agendado",
+      "stateClass": "scheduled",
+      "dateRange": "27 May",
+      "options": [
+        { "id": "o15", "place": "Cafetería El Faro", "datetime": "2026-05-27 08:00", "votes": 15 }
+      ],
+      "attendance": [
+        { "name": "Laura Mejía", "status": "Yes" },
+        { "name": "Diego Arango", "status": "Yes" }
+      ],
+      "checkinWindow": "27 May · 07:30 - 08:00",
+      "winnerNote": "Desayuno confirmado para el grupo."
+    },
+    "p8": {
+      "id": "p8",
+      "title": "Estudio en grupo",
+      "description": "Organiza una sesión para preparar los parciales juntos.",
+      "state": "VotingOpen",
+      "stateLabel": "Votación abierta",
+      "stateClass": "voting",
+      "dateRange": "25 - 26 May",
+      "options": [
+        { "id": "o16", "place": "Salón de estudio A", "datetime": "2026-05-25 17:00", "votes": 9 },
+        { "id": "o17", "place": "Sala de estudio B", "datetime": "2026-05-26 16:00", "votes": 7 }
+      ],
+      "attendance": [],
+      "checkinWindow": "25 May · 16:30 - 17:00",
+      "winnerNote": "Vota la mejor hora para estudiar en grupo."
+    },
+    "p9": {
+      "id": "p9",
+      "title": "Noche de trivia",
+      "description": "Prepara tu equipo para la noche de preguntas y premios.",
+      "state": "Draft",
+      "stateLabel": "Borrador",
+      "stateClass": "draft",
+      "dateRange": "3 Jun",
+      "options": [
+        { "id": "o18", "place": "Salón Cultural", "datetime": "2026-06-03 19:00", "votes": 0 },
+        { "id": "o19", "place": "Cafetería Campus", "datetime": "2026-06-03 20:00", "votes": 0 }
+      ],
+      "attendance": [],
+      "checkinWindow": "03 Jun · 18:30 - 19:00",
+      "winnerNote": "Define la mejor ubicación para la trivia."
+    },
+    "p10": {
+      "id": "p10",
+      "title": "Tour de cafecitos",
+      "description": "Una ruta de cafés del campus para probar nuevas opciones.",
+      "state": "Scheduled",
+      "stateLabel": "Agendado",
+      "stateClass": "scheduled",
+      "dateRange": "29 May",
+      "options": [
+        { "id": "o20", "place": "Café Verde", "datetime": "2026-05-29 10:30", "votes": 11 }
+      ],
+      "attendance": [
+        { "name": "Catalina Pérez", "status": "Yes" }
+      ],
+      "checkinWindow": "29 May · 10:00 - 10:30",
+      "winnerNote": "Ruta confirmada para disfrutar el café."
+    },
+    "p11": {
+      "id": "p11",
+      "title": "Partido de fútbol",
+      "description": "Organiza el equipo y la cancha para el próximo partido amistoso.",
+      "state": "VotingClosed",
+      "stateLabel": "Votación cerrada",
+      "stateClass": "voting",
+      "dateRange": "26 May",
+      "options": [
+        { "id": "o21", "place": "Cancha A", "datetime": "2026-05-26 17:00", "votes": 13 },
+        { "id": "o22", "place": "Cancha B", "datetime": "2026-05-26 18:30", "votes": 9 }
+      ],
+      "attendance": [
+        { "name": "Diego Arango", "status": "Maybe" }
+      ],
+      "checkinWindow": "26 May · 16:30 - 17:00",
+      "winnerNote": "Partido listo para agendarse tras votación."
+    },
+    "p12": {
+      "id": "p12",
+      "title": "Caminata matutina",
+      "description": "Una caminata ligera para activar el cuerpo antes del día.",
+      "state": "VotingOpen",
+      "stateLabel": "Votación abierta",
+      "stateClass": "voting",
+      "dateRange": "24 May",
+      "options": [
+        { "id": "o23", "place": "Parque del Río", "datetime": "2026-05-24 07:00", "votes": 8 },
+        { "id": "o24", "place": "Sendero Verde", "datetime": "2026-05-24 08:00", "votes": 5 }
+      ],
+      "attendance": [],
+      "checkinWindow": "24 May · 06:30 - 07:00",
+      "winnerNote": "Vota el mejor punto de partida para la caminata."
+    },
+    "p13": {
+      "id": "p13",
+      "title": "Yoga en el parque",
+      "description": "Una sesión de yoga para relajar cuerpo y mente al aire libre.",
+      "state": "Draft",
+      "stateLabel": "Borrador",
+      "stateClass": "draft",
+      "dateRange": "31 May",
+      "options": [
+        { "id": "o25", "place": "Parque Central", "datetime": "2026-05-31 08:00", "votes": 0 },
+        { "id": "o26", "place": "Jardines del campus", "datetime": "2026-05-31 09:30", "votes": 0 }
+      ],
+      "attendance": [],
+      "checkinWindow": "31 May · 07:30 - 08:00",
+      "winnerNote": "Prepara la sesión de yoga en el mejor sitio."
+    },
+    "p14": {
+      "id": "p14",
+      "title": "Duelo de baloncesto",
+      "description": "Organiza equipos y cancha para un duelo amistoso.",
+      "state": "Scheduled",
+      "stateLabel": "Agendado",
+      "stateClass": "scheduled",
+      "dateRange": "30 May",
+      "options": [
+        { "id": "o27", "place": "Cancha de Baloncesto", "datetime": "2026-05-30 19:00", "votes": 16 }
+      ],
+      "attendance": [
+        { "name": "Nicolás Rojas", "status": "Yes" },
+        { "name": "Diego Arango", "status": "Yes" }
+      ],
+      "checkinWindow": "30 May · 18:30 - 19:00",
+      "winnerNote": "Partido agendado y listo para jugar."
+    }
+  }
+}

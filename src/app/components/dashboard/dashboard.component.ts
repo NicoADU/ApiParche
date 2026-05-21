@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,19 +13,23 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  userName = 'Juan';
+  userName = 'Usuario';
   avatarUrl = '';
   isLoading = true;
   parches: any[] = [];
 
-  async ngOnInit() {
+  constructor(private apiService: ApiService) {}
 
-    await new Promise(r => setTimeout(r, 1000));
-    this.parches = [
-      { id: '1', name: 'Los del Bloque 5', memberCount: 8, activePlans: 2, role: 'Owner', coverUrl: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=200&q=60' },
-      { id: '2', name: 'Café Estudiantil', memberCount: 14, activePlans: 1, role: 'Member', coverUrl: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200&q=60' },
-      { id: '3', name: 'Deportes EAFIT', memberCount: 22, activePlans: 0, role: 'Moderator', coverUrl: '' },
-    ];
+  async ngOnInit() {
+    this.isLoading = true;
+    const [user, parches] = await Promise.all([
+      firstValueFrom(this.apiService.getCurrentUser()),
+      firstValueFrom(this.apiService.getDashboardParches()),
+    ]);
+
+    this.userName = user.name || 'Usuario';
+    this.avatarUrl = user.avatarUrl || '';
+    this.parches = parches;
     this.isLoading = false;
   }
 }
